@@ -1,12 +1,18 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { StyleSheet, FlatList, Platform} from 'react-native';
 import ContatoItem from '../components/ContatoItem';
 import {HeaderButtons, Item} from 'react-navigation-header-buttons';
 import BotaoCabecalho from '../components/BotaoCabecalho';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import * as contatosActions from '../store/contatos-actions';
 
 const TelaComeco =(props)=>{
   const contatos = useSelector(estado=>estado.contatos.contatos);
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    dispatch(contatosActions.listarContatos())
+  },[dispatch]);
 
   return ( 
     <FlatList
@@ -30,12 +36,12 @@ const TelaComeco =(props)=>{
 
 TelaComeco.navigationOptions = dadosNav =>{
   return{
-    headerTitle:'Lista de contatos',
+    headerTitle:'Todos os Contatos',
     headerRight:
       <HeaderButtons
         HeaderButtonComponent={BotaoCabecalho}>
         <Item
-          title="add"
+          title="Adicionar"
           iconName={Platform.OS === 'android'?'md-add':'ios-add'}
           onPress={()=>{dadosNav.navigation.navigate("NovoContato")}}
         /> 
