@@ -10,10 +10,10 @@ export const init = () =>{
         db.transaction((tx )=>{
             tx.executeSql(
     
-                'CREATE TABLE IF NOT EXISTS tb_contatos (id INTEGER PRIMARY KEY, nome TEXT NOT NULL, imagemUri TEXT NOT NULL, numero INTEGER);',
+                'CREATE TABLE IF NOT EXISTS tb_contatos (id INTEGER PRIMARY KEY, nome TEXT NOT NULL, imagemUri TEXT NOT NULL, numero INTEGER, lat REAL NOT NULL, lng REAL NOT NULL);',
                 [],
                 (_, resultado) => {resolve(resultado)},
-                (_, err) => {reject()}
+                (_, err) => {reject(err)}
     
             );
         });
@@ -50,7 +50,7 @@ export const buscarContatos = () => {
         db.transaction((tx )=>{
             tx.executeSql(
     
-                'SELECT * FROM tb_contatos',
+                'SELECT * FROM tb_contatos ',
                 [],
                 (_, resultado) => {resolve(resultado)},
                 (_, err) => {reject(err)}

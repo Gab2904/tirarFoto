@@ -4,6 +4,7 @@ import {useDispatch} from 'react-redux';
 import * as contatosActions from '../store/contatos-actions';
 import Cores from '../Cores/Cores';
 import TirarFoto from '../components/TirarFoto'
+import CapturaLocalizacao from '../components/CapturaLocalizacao';
 
 
 const TelaNovoContato=(props)=>{
@@ -48,6 +49,7 @@ const TelaNovoContato=(props)=>{
                         value={numeroContato}
                     />
                     <TirarFoto onFotoTirada={fotoTirada}/>
+                    <CapturaLocalizacao/>
                     <Button
                         title="Salvar Contato"
                         color={Cores.primary}

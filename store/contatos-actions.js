@@ -34,7 +34,9 @@ export const addContato = (nomeContato, numeroContato, imagem) =>{
                 nomeContato,
                 novoPath,
                 'Gabriel',
-                971379307
+                971379307,
+                48.8584,
+                2.2945
             );
 
             console.log(JSON.stringify(resultadoBD));
